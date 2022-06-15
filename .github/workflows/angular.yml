@@ -40,7 +40,7 @@ jobs:
 
       - name: Build
         run: |
-          npm run build -- --prod
+          npm run build --prod
 
       - name: Lint
         run: |
@@ -48,7 +48,7 @@ jobs:
 
       - name: Test
         run: |
-          npm run test -- --prod
+          npm run test --prod
 
       - name: Conventional Changelog Action
         id: changelog
