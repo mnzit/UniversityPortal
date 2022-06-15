@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-2"></div>
+    <div class="col-md-auto">
+      <h1 #loginTitle>Login to University Portal</h1>
+      <form class="needs-validation" #loginForm="ngForm" novalidate>
+        <div class="mb-3">
+          <div class="form-floating mb-3">
+            <input type="email" ngModel #emailInput="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              name="emailAddress" class="form-control" placeholder="Email Address" id="floatingInput" required>
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div *ngIf="emailInput.touched">
+            <span *ngIf="emailInput.errors?.['required']" class="badge bg-secondary bg-danger">Email is a required
+              field!</span>
+            <span *ngIf="emailInput.errors?.['pattern']" class="badge bg-secondary bg-danger">Email is invalid!</span>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-floating mb-3">
+            <input type="password" ngModel #passwordInput="ngModel" name="password" class="form-control"
+              placeholder="Email Address" id="floatingInput" required>
+            <label for="floatingInput">Password</label>
+          </div>
+          <div *ngIf="passwordInput.touched">
+            <span *ngIf="passwordInput.errors?.['required']" class="badge bg-secondary bg-danger">Password is a required
+              field!</span>
+          </div>
+        </div>
+        <button [disabled]="loginForm.form.invalid" type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+    <div class="col col-lg-2"></div>
+  </div>
+</div>
