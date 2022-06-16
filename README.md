@@ -1,4 +1,4 @@
 # Universityportal
 
 FE for UniversityPortal
-universityportal.mnzit.workers.dev
+http://www.universityportal.mnzit.workers.dev
