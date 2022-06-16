@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:prod": "ng build --configuration production --base-href https://mnzit.github.io/universityportal/",
+    "build:prod": "ng build --configuration production --base-href https://mnzit.github.io/universityportal-fe/",
     "test:headless": "ng test --watch=false --browsers=ChromeHeadless",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

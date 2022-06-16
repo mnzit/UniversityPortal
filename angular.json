@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "universityportal": {
+    "universityportal-fe": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/universityportal",
+            "outputPath": "dist/universityportal-fe",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "universityportal:build:production"
+              "browserTarget": "universityportal-fe:build:production"
             },
             "development": {
-              "browserTarget": "universityportal:build:development"
+              "browserTarget": "universityportal-fe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "universityportal:build"
+            "browserTarget": "universityportal-fe:build"
           }
         },
         "test": {
