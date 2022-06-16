@@ -6,14 +6,13 @@ import { LoginComponent } from './authentication/components/login/login.componen
 const routes: Routes = [
   {
     path: "",
-    pathMatch: "full",
-    loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
+    redirectTo: "login",
+    pathMatch: "full"
   },
   {
     path: "login",
     component: LoginComponent
   }
-
 ];
 
 @NgModule({
