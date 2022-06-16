@@ -1,9 +1,0 @@
-name = "universityportal-fe"
-type = 'webpack'
-account_id = '58b250df7d8d51bdbc20425b3d71804b' 
-route = ''
-zone_id = ''
-usage_model = ''
-workers_dev = true
-target_type = "webpack"
-site = {bucket = "./dist/universityportal-fe",entry-point = "workers-site"}
