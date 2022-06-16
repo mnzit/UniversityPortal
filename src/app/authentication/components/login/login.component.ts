@@ -8,9 +8,6 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, } from '@angul
 export class LoginComponent implements OnInit,AfterViewInit  {
   @ViewChild('loginForm', { static: true }) 
   loginForm!: ElementRef;
-  @ViewChild('loginTitle', { static: true }) 
-  loginTitle!: ElementRef;
-  inputEmailType: string = "email";
   constructor() { 
     
   }
@@ -21,7 +18,6 @@ export class LoginComponent implements OnInit,AfterViewInit  {
 
   ngAfterViewInit(): void {
     console.log(this.loginForm)
-    console.log(this.loginTitle)
   }
 
 }

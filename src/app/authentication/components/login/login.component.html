@@ -1,19 +1,23 @@
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5 text-center">
+    <h1 class="display-5 fw-bold">Welcome to University Portal</h1>
+    <p class="fs-4">Login to continue</p>
+  </div>
+</div>
 <div class="container">
   <div class="row justify-content-md-center">
-    <div class="col col-lg-2"></div>
-    <div class="col-md-auto">
-      <h1 #loginTitle>Signin to University Portal</h1>
+    <div class="col-md-8">
       <form class="needs-validation" #loginForm="ngForm" novalidate>
         <div class="mb-3">
           <div class="form-floating mb-3">
             <input type="email" ngModel #emailInput="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               name="emailAddress" class="form-control" placeholder="Email Address" id="floatingInput" required>
             <label for="floatingInput">Email address</label>
-          </div>
-          <div *ngIf="emailInput.touched">
-            <span *ngIf="emailInput.errors?.['required']" class="badge bg-secondary bg-danger">Email is a required
-              field!</span>
-            <span *ngIf="emailInput.errors?.['pattern']" class="badge bg-secondary bg-danger">Email is invalid!</span>
+            <div *ngIf="emailInput.touched">
+              <span *ngIf="emailInput.errors?.['required']" class="badge bg-secondary bg-danger">Email is a required
+                field!</span>
+              <span *ngIf="emailInput.errors?.['pattern']" class="badge bg-secondary bg-danger">Email is invalid!</span>
+            </div>
           </div>
         </div>
         <div class="mb-3">
@@ -21,16 +25,14 @@
             <input type="password" ngModel #passwordInput="ngModel" name="password" class="form-control"
               placeholder="Email Address" id="floatingInput" required>
             <label for="floatingInput">Password</label>
-          </div>
-          <div *ngIf="passwordInput.touched">
-            <span *ngIf="passwordInput.errors?.['required']" class="badge bg-secondary bg-danger">Password is a required
-              field!</span>
+            <div *ngIf="passwordInput.touched">
+              <span *ngIf="passwordInput.errors?.['required']" class="badge bg-secondary bg-danger">Password is a required
+                field!</span>
+            </div>
           </div>
         </div>
-        <button [disabled]="loginForm.form.invalid" type="submit" class="btn btn-primary">Login</button>
+        <button [disabled]="loginForm.form.invalid" type="submit" class="btn w-25 btn-primary float-end">Login</button>
       </form>
     </div>
-    <div class="col col-lg-2"></div>
   </div>
-  
 </div>
