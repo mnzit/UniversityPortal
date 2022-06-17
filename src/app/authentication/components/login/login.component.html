@@ -8,7 +8,7 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-md-8">
-      <form class="needs-validation" #loginForm="ngForm" novalidate>
+      <form class="needs-validation" #loginForm="ngForm" (submit)="login()" novalidate>
         <div class="mb-3">
           <div class="form-floating mb-3">
             <input type="email" ngModel #emailInput="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
@@ -27,12 +27,14 @@
               placeholder="Email Address" id="floatingInput" required>
             <label for="floatingInput">Password</label>
             <div *ngIf="passwordInput.touched">
-              <span *ngIf="passwordInput.errors?.['required']" class="badge bg-secondary bg-danger">Password is a required
+              <span *ngIf="passwordInput.errors?.['required']" class="badge bg-secondary bg-danger">Password is a
+                required
                 field!</span>
             </div>
           </div>
         </div>
-        <button [disabled]="loginForm.form.invalid" type="submit" class="btn w-25 btn-primary float-end up-primary-bg-color">Login</button>
+        <button [disabled]="loginForm.form.invalid" type="submit"
+          class="btn w-25 btn-primary float-end up-primary-bg-color">Login</button>
       </form>
     </div>
   </div>
