@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateComponent } from './components/create/create.component';
+import { DetailComponent } from './components/detail/detail.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ListComponent } from './components/list/list.component';
-import { ViewComponent } from './components/view/view.component';
 
 const routes: Routes = [
   {
@@ -15,12 +15,12 @@ const routes: Routes = [
     component: CreateComponent
   },
   {
-    path:"edit",
+    path:"edit/:id",
     component: EditComponent
   },
   {
-    path:":id",
-    component: ViewComponent
+    path:"detail/:id",
+    component: DetailComponent
   }
 ];
 

@@ -5,7 +5,8 @@ import { UserRoutingModule } from './user-routing.module';
 import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
-import { ViewComponent } from './components/view/view.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DetailComponent } from './components/detail/detail.component';
 
 
 @NgModule({
@@ -13,11 +14,12 @@ import { ViewComponent } from './components/view/view.component';
     ListComponent,
     CreateComponent,
     EditComponent,
-    ViewComponent
+    DetailComponent
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    HttpClientModule,
   ]
 })
 export class UserModule { }
