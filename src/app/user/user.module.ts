@@ -7,6 +7,7 @@ import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DetailComponent } from './components/detail/detail.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { DetailComponent } from './components/detail/detail.component';
     CommonModule,
     UserRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }
