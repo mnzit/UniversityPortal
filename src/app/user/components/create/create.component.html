@@ -5,32 +5,37 @@
   </div>
 </div>
 
-<form [formGroup]="createUserForm" class="mt-2 needs-validation" novalidate>
+<form [formGroup]="createUserForm" (submit) = "submit()" class="mt-2 needs-validation" novalidate>
 
   <div class="row">
     <div class="col-4 mb-3">
       <div class="form-floating mb-3">
-        <input type="text" formControlName="firstName" name="firstName" class="form-control" placeholder="Firstname" id="floatingInput" required>
+        <input type="text" formControlName="firstName" name="firstName" class="form-control" placeholder="Firstname"
+          id="floatingInput" required>
         <label for="floatingInput">Firstname</label>
         <div *ngIf="firstName?.touched">
-          <span *ngIf="firstName?.errors?.['required']" class="badge bg-secondary bg-danger">Middlename is required!</span>
+          <span *ngIf="firstName?.errors?.['required']" class="badge bg-secondary bg-danger">Middlename is
+            required!</span>
         </div>
       </div>
     </div>
 
     <div class="col-4 mb-3">
       <div class="form-floating mb-3">
-        <input formControlName="middleName" type="text" name="middleName" class="form-control" placeholder="Middlename" id="floatingInput" required>
+        <input formControlName="middleName" type="text" name="middleName" class="form-control" placeholder="Middlename"
+          id="floatingInput" required>
         <label for="floatingInput">Middlename</label>
         <div *ngIf="middleName?.touched">
-          <span *ngIf="middleName?.errors?.['required']" class="badge bg-secondary bg-danger">Firstname is required!</span>
+          <span *ngIf="middleName?.errors?.['required']" class="badge bg-secondary bg-danger">Firstname is
+            required!</span>
         </div>
       </div>
     </div>
 
     <div class="col-4 mb-3">
       <div class="form-floating mb-3">
-        <input formControlName="lastName" type="text" name="lastName" class="form-control" placeholder="Lastname" id="floatingInput" required>
+        <input formControlName="lastName" type="text" name="lastName" class="form-control" placeholder="Lastname"
+          id="floatingInput" required>
         <label for="floatingInput">Lastname</label>
         <div *ngIf="lastName?.touched">
           <span *ngIf="lastName?.errors?.['required']" class="badge bg-secondary bg-danger">Lastname is required!</span>
@@ -45,24 +50,25 @@
     <div class="col-4 mb-3">
       <div class="form-floating mb-3">
         <select formControlName="genderType" class="form-control" name="genderType">
-          <option>Default select</option>
+          <option *ngFor="let gender of genderType" [value]="gender.value">{{gender.key}}</option>
         </select>
-        <label for="floatingInput">Select Gender</label>
+        <label for="floatingInput">Gender</label>
       </div>
     </div>
 
     <div class="col-4 mb-3">
       <div class="form-floating mb-3">
-        <input formControlName="address" type="text" name="address" class="form-control" placeholder="Address" id="floatingInput" required>
+        <input formControlName="address" type="text" name="address" class="form-control" placeholder="Address"
+          id="floatingInput" required>
         <label for="floatingInput">Address</label>
-        
+
       </div>
     </div>
 
     <div class="col-4 mb-3">
       <div class="form-floating mb-3">
-        <input formControlName="emailAddress" type="text" name="emailAddress" class="form-control" placeholder="Email Address" id="floatingInput"
-          required>
+        <input formControlName="emailAddress" type="text" name="emailAddress" class="form-control"
+          placeholder="Email Address" id="floatingInput" required>
         <label for="floatingInput">Email Address</label>
       </div>
     </div>
@@ -72,8 +78,8 @@
   <div class="row">
     <div class="col-4 mb-3">
       <div class="form-floating mb-3">
-        <input formControlName="contactNo" type="text" name="contactNo" class="form-control" placeholder="Contact No" id="floatingInput"
-          required>
+        <input formControlName="contactNo" type="text" name="contactNo" class="form-control" placeholder="Contact No"
+          id="floatingInput" required>
         <label for="floatingInput">Contact No</label>
       </div>
     </div>
@@ -81,29 +87,31 @@
     <div class="col-4 mb-3">
       <div class="form-floating mb-3">
         <select formControlName="roleId" class="form-control" name="roleId">
-          <option>Default select</option>
+          <option *ngFor="let role of roles" [value]="role.id">{{role.name}}</option>
         </select>
         <label for="floatingInput">Select Role</label>
       </div>
     </div>
 
     <div class="col-4 form-check form-switch">
-      <input formControlName="sendEmail" name="sendEmail" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+      <input formControlName="sendEmail" name="sendEmail" class="form-check-input" type="checkbox"
+        id="flexSwitchCheckChecked" checked>
       <label class="form-check-label" for="sendEmail">Send Email</label>
     </div>
   </div>
 
   <div class="row">
-  
+
     <div class="col-4 form-check form-switch">
-      <input formControlName="isPasswordGenerated" name="isPasswordGenerated" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+      <input (change) = "showPassword=!showPassword" formControlName="isPasswordGenerated" name="isPasswordGenerated" class="form-check-input" type="checkbox"
+        id="flexSwitchCheckChecked" checked>
       <label class="form-check-label" for="generatePassword">Generate Password</label>
     </div>
 
-    <div class="col-4 mb-3">
+    <div class="col-4 mb-3" *ngIf="showPassword">
       <div class="form-floating mb-3">
-        <input formControlName="password" type="password" name="password" class="form-control" placeholder="Email Address" id="floatingInput"
-          required>
+        <input formControlName="password" type="password" name="password" class="form-control"
+          placeholder="Email Address" id="floatingInput" required>
         <label for="floatingInput">Password</label>
       </div>
     </div>

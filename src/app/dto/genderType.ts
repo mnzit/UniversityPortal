@@ -1,1 +1,3 @@
-export type Gender = "MALE" | "FEMALE";
+import { GenderEnum } from "../constants/GenderEnum";
+
+export type Gender = GenderEnum;
