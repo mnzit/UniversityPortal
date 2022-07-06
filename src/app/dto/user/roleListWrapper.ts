@@ -1,6 +1,6 @@
 
 export interface RoleListWrapper {
-    roles: RoleList[]
+    roles?: RoleList[]
 }
 export interface RoleList {
     id: number,

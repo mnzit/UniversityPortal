@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Response } from 'src/app/dto/response';
 import { RoleListWrapper } from 'src/app/dto/user/roleListWrapper';
+import { UserDetail } from 'src/app/dto/user/userDetail';
 import { UserList } from 'src/app/dto/user/userlist';
 
 @Injectable({
@@ -24,8 +25,16 @@ export class UserService {
     return this.http.get<Response<RoleListWrapper>>("https://api-universityportal.herokuapp.com/roles");
   }
 
-  save(body: any):Observable<Response<any>>{
+  save(body: any | undefined):Observable<Response<any>>{
     return this.http.post<Response<any>>("https://api-universityportal.herokuapp.com/users",body);
+  }
+
+  update(body: any | undefined):Observable<Response<any>>{
+    return this.http.put<Response<any>>("https://api-universityportal.herokuapp.com/users",body);
+  }
+
+  detail(id: number):Observable<Response<UserDetail>>{
+    return this.http.get<Response<UserDetail>>("https://api-universityportal.herokuapp.com/users/"+id);
   }
 
   

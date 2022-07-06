@@ -16,9 +16,16 @@
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
               <li><a class="dropdown-item" [routerLink]="['users']">All Users</a></li>
               <li><a class="dropdown-item" [routerLink]="['users','create']">Create Users</a></li>
+            
             </ul>
           </li>
+          <li class="nav-item">
+            
+          </li>
         </ul>
+        <span class="d-flex">
+          <button class="btn btn-outline-success" (click) ="logout()">Logout</button>
+        </span>
       </div>
     </div>
   </nav>

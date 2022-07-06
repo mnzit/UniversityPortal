@@ -7,4 +7,8 @@ export class SessionStorageHelper{
     static getValue(key: string): any {
         return sessionStorage.getItem(key);
     }
+
+    static removeValue(key: string): any {
+        return sessionStorage.removeItem(key)
+    }
 }

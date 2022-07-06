@@ -1,16 +1,98 @@
-<form>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5 text-center">
+    <p class="fs-4 p-4 fw-bold">Update User</p>
+    {{editUserForm.value | json}}
+  </div>
+</div>
+
+<form [formGroup]="editUserForm" (submit) = "submit()" class="mt-2 needs-validation" novalidate>
+
+  <div class="row">
+    <div class="col-4 mb-3">
+      <div class="form-floating mb-3">
+        <input type="text" formControlName="firstName" name="firstName" class="form-control" placeholder="Firstname"
+          id="floatingInput" required>
+        <label for="floatingInput">Firstname</label>
+        <div *ngIf="firstName?.touched">
+          <span *ngIf="firstName?.errors?.['required']" class="badge bg-secondary bg-danger">Middlename is
+            required!</span>
+        </div>
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+
+    <div class="col-4 mb-3">
+      <div class="form-floating mb-3">
+        <input formControlName="middleName" type="text" name="middleName" class="form-control" placeholder="Middlename"
+          id="floatingInput" required>
+        <label for="floatingInput">Middlename</label>
+        <div *ngIf="middleName?.touched">
+          <span *ngIf="middleName?.errors?.['required']" class="badge bg-secondary bg-danger">Firstname is
+            required!</span>
+        </div>
+      </div>
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+    <div class="col-4 mb-3">
+      <div class="form-floating mb-3">
+        <input formControlName="lastName" type="text" name="lastName" class="form-control" placeholder="Lastname"
+          id="floatingInput" required>
+        <label for="floatingInput">Lastname</label>
+        <div *ngIf="lastName?.touched">
+          <span *ngIf="lastName?.errors?.['required']" class="badge bg-secondary bg-danger">Lastname is required!</span>
+        </div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-4 mb-3">
+      <div class="form-floating mb-3">
+        <select formControlName="genderType" class="form-control" name="genderType">
+          <option *ngFor="let gender of genderType" [value]="gender.value">{{gender.key}}</option>
+        </select>
+        <label for="floatingInput">Gender</label>
+      </div>
+    </div>
+
+    <div class="col-4 mb-3">
+      <div class="form-floating mb-3">
+        <input formControlName="address" type="text" name="address" class="form-control" placeholder="Address"
+          id="floatingInput" required>
+        <label for="floatingInput">Address</label>
+
+      </div>
+    </div>
+
+    <div class="col-4 mb-3">
+      <div class="form-floating mb-3">
+        <input formControlName="emailAddress" type="text" name="emailAddress" class="form-control"
+          placeholder="Email Address" id="floatingInput" required>
+        <label for="floatingInput">Email Address</label>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-4 mb-3">
+      <div class="form-floating mb-3">
+        <input formControlName="contactNo" type="text" name="contactNo" class="form-control" placeholder="Contact No"
+          id="floatingInput" required>
+        <label for="floatingInput">Contact No</label>
+      </div>
+    </div>
+
+    <div class="col-4 mb-3">
+      <div class="form-floating mb-3">
+        <select formControlName="roleId" class="form-control" name="roleId">
+          <option *ngFor="let role of roles" [value]="role.id">{{role.name}}</option>
+        </select>
+        <label for="floatingInput">Select Role</label>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn w-25 btn-primary float-end up-primary-bg-color">Update</button>
+</form>

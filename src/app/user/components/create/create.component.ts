@@ -14,9 +14,9 @@ import { UserService } from '../../services/user.service';
 })
 export class CreateComponent {
 
-  createUserForm: FormGroup;
+  createUserForm!: FormGroup;
   genderType: any[] = enumToObject(GenderEnum);
-  roles: RoleList[]| undefined;
+  roles!: RoleList[] | undefined;
   showPassword: boolean = true;
 
   constructor(private formBuilder: FormBuilder,
@@ -24,6 +24,11 @@ export class CreateComponent {
     private userService: UserService,
     private router: Router
   ) {
+    this.buildUserFormGroup();
+    this.getRoles();
+  } 
+
+  buildUserFormGroup(): void{
     this.createUserForm = this.formBuilder.group({
       firstName: ["", [Validators.required]],
       middleName: ["", []],
@@ -37,36 +42,29 @@ export class CreateComponent {
       sendEmail: ["", [Validators.required]],
       roleId: ["", [Validators.required]]
     });
-
-    this.userService.roles().subscribe((response) => {
-     this.roles = response.data?.roles
-    },
-      (error) => {
-        this.toastr.error(error.error.message, 'Failed loading roles', {
-          timeOut: 2000,
-        });
-
-      });
   }
 
-  submit(){
-    this.userService.save(this.createUserForm.value).subscribe((response) => {
-      this.toastr.success(response.message, 'Save Successful', {
-        timeOut: 2000,
-      });
-      this.router.navigate(['/users']);
-     },
-       (error) => {
-         this.toastr.error(error.error.message, 'Failed saving user', {
-           timeOut: 2000,
-         });
- 
-       })
+  getRoles(): void {
+    
+    this.userService.roles().subscribe({
+      next: (response) => this.roles = response?.data?.roles,
+      error: (error) => this.toastr.error(error?.error?.message, 'Failed loading roles')
+    });
   }
 
-  get firstName() { return this.createUserForm.get('firstName'); }
-  get middleName() { return this.createUserForm.get('middleName'); }
-  get lastName() { return this.createUserForm.get('lastName'); }
+  submit(): void {
+    this.userService.save(this.createUserForm?.value).subscribe({
+      error: (error) => this.toastr.error(error?.error?.message, 'Failed saving user'),
+      next: (response) => {
+        this.toastr.success(response?.message, 'Save Successful');
+        this.router.navigate(['/users']);
+      }
+    })
+  }
+
+  get firstName() { return this.createUserForm?.get('firstName'); }
+  get middleName() { return this.createUserForm?.get('middleName'); }
+  get lastName() { return this.createUserForm?.get('lastName'); }
 
 }
 
