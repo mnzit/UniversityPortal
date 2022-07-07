@@ -4,11 +4,15 @@ import { CreateComponent } from './components/create/create.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ListComponent } from './components/list/list.component';
+import { ListResolver } from './resolvers/list.resolver';
 
 const routes: Routes = [
   {
     path:"",
-    component: ListComponent
+    component: ListComponent,
+    resolve: {
+      users: ListResolver
+    }
   },
   {
     path:"create",

@@ -17,7 +17,7 @@ export class LoginComponent  {
   @ViewChild('loginForm', { static: true }) 
   loginForm!: NgForm;
   
-
+  isLoading: boolean = false;
 
   constructor(private authService: AuthService,
               private toastr: ToastrService,
@@ -25,6 +25,7 @@ export class LoginComponent  {
               { }
 
   login(){
+    this.isLoading = true;
     let request = {
         "emailAddress": this.formControl("emailAddress").value,
         "password": this.formControl("password").value
@@ -33,6 +34,7 @@ export class LoginComponent  {
     this.authService.login(request).subscribe((httpResponse) => {
         let authorizationHeader: string | null = httpResponse.headers.get('Authorization');
         if(authorizationHeader){
+          this.isLoading = false;
           console.log("Login Success -> Setting token to session storage")
           SessionStorageHelper.setValue("token", authorizationHeader);
           this.router.navigate(['/']);

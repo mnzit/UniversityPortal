@@ -33,9 +33,21 @@
             </div>
           </div>
         </div>
-        <button [disabled]="loginForm.form.invalid" type="submit"
-          class="btn w-25 btn-primary float-end up-primary-bg-color">Login</button>
+
+        <button *ngIf="!isLoading" [disabled]="loginForm.form.invalid" type="submit"
+          class="btn w-25 btn-primary float-end up-primary-bg-color">
+          Login 
+        </button>
+
+        <button *ngIf="isLoading" class="btn w-25 btn-primary float-end up-primary-bg-color" type="submit" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Logging in...
+        </button>
       </form>
     </div>
   </div>
 </div>
+
+<button class="btn btn-primary" type="button" disabled>
+  
+</button>

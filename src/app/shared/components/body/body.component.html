@@ -1,7 +1,10 @@
 <up-header></up-header>
 <main class="mt-10 flex-shrink-0">
-    <div class="container">
-        <router-outlet></router-outlet>
+  <div class="container">
+    <div *ngIf="isLoading" class="d-flex justify-content-center align-middle">
+        <up-loader class="child"></up-loader>
     </div>
+    <router-outlet *ngIf="!isLoading"></router-outlet>
+  </div>
 </main>
 <up-footer></up-footer>
